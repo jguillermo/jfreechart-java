@@ -27,11 +27,16 @@ import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.data.category.CategoryToPieDataset;
 import javax.swing.ButtonGroup;
+import javax.swing.JFrame;
 import org.jfree.data.general.PieDataset;
 
 public class GUI extends javax.swing.JFrame {
 
     private String[][] data = new String[6][2];
+
+    Integer count = 0;
+
+    private String charTitle = "Notas de Alumnos";
 
     public GUI() {
         initComponents();
@@ -73,6 +78,7 @@ public class GUI extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -255,6 +261,15 @@ public class GUI extends javax.swing.JFrame {
         getContentPane().add(jLabel20);
         jLabel20.setBounds(300, 60, 420, 190);
 
+        jButton2.setText("Cambiar Título");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2);
+        jButton2.setBounds(590, 30, 130, 29);
+
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imagen5.jpg"))); // NOI18N
         getContentPane().add(jLabel15);
@@ -269,6 +284,7 @@ public class GUI extends javax.swing.JFrame {
         jRadioButton3.setSelected(false);
         this.printDataChart();
 
+
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     private void printDataChart() {
@@ -276,15 +292,16 @@ public class GUI extends javax.swing.JFrame {
         DefaultCategoryDataset dataset;
         PieDataset pieDataset;
         JFreeChart chart;
+
         if (jRadioButton1.isSelected()) {
             dataset = this.getDataSet();
-            chart = ChartFactory.createLineChart("Notas de Alumnos", "Puntaje", "Alumnos", dataset, PlotOrientation.HORIZONTAL, false, true, false);
+            chart = ChartFactory.createLineChart(this.charTitle, "Puntaje", "Alumnos", dataset, PlotOrientation.HORIZONTAL, false, true, false);
         } else if (jRadioButton2.isSelected()) {
-            dataset = this.getDataSet();
-            chart = ChartFactory.createBarChart("Notas de Alumnos", "Puntaje", "Alumnos", dataset, PlotOrientation.VERTICAL, false, false, false);
+            dataset = this.getDataSet(); // GETDATASET??
+            chart = ChartFactory.createBarChart(this.charTitle, "Puntaje", "Alumnos", dataset, PlotOrientation.VERTICAL, false, false, false);
         } else if (jRadioButton3.isSelected()) {
             pieDataset = this.getPieDataSet();
-            chart = ChartFactory.createPieChart("Notas de Alumnos", pieDataset, false, false, false);
+            chart = ChartFactory.createPieChart(this.charTitle, pieDataset, false, false, false);
         } else {
             jRadioButton1.setSelected(true);
             this.printDataChart();
@@ -301,13 +318,19 @@ public class GUI extends javax.swing.JFrame {
     }
 
     private void printEstadisticas() {
-        
-        DecimalFormat df = new DecimalFormat("#.##");
-        df.setRoundingMode(RoundingMode.CEILING);
-        
+
+        DecimalFormat df = new DecimalFormat("#.###");
+        df.setRoundingMode(RoundingMode.CEILING); //
+
         Estadisticas estadistica = new Estadisticas(this.data);
 
         jLabel8.setText(df.format(estadistica.getMedia()));
+        //jLabel9.setText(df.format(estadistica.getMediana()));
+        jLabel10.setText(df.format(estadistica.getMedia()));
+        jLabel11.setText(df.format(estadistica.getVarianza()));
+        jLabel17.setText(df.format(estadistica.getDesviacionEstandar()));
+        jLabel18.setText(df.format(estadistica.getDesviacionMedia()));
+        jLabel12.setText(df.format(estadistica.getRango()));
     }
 
     private DefaultCategoryDataset getDataSet() {
@@ -370,7 +393,7 @@ public class GUI extends javax.swing.JFrame {
             if (jTable1.getValueAt(fila, 1) != null) {
                 try {
                     nota = Float.parseFloat(String.valueOf(jTable1.getValueAt(fila, 1)));
-                    if (nota > 20 || nota < 0) {
+                    if (nota > 10000 || nota < 0) {
                         throw new Exception("error de nota");
                     }
                 } catch (Exception ex) {
@@ -387,8 +410,27 @@ public class GUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jTable1PropertyChange
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        JFrame frame = new JFrame("");
+        String code = JOptionPane.showInputDialog(
+                frame,
+                "Ingrese el título",
+                "Nuevo título",
+                JOptionPane.WARNING_MESSAGE
+        );
+
+        if (code!= null) {
+            this.charTitle = code;
+            this.printDataChart();
+        }
+
+
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
