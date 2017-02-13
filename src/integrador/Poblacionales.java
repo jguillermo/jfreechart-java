@@ -2,11 +2,11 @@ package integrador;
 
 import java.util.Arrays;
 
-public class Estadisticas {
+public class Poblacionales implements StadisticsInterface {
 
     private Double[] data;
 
-    public Estadisticas(String[][] data) {
+    public Poblacionales(String[][] data) {
         this.filterData(data);
     }
 
@@ -45,26 +45,46 @@ public class Estadisticas {
         return suma / this.data.length;
     }
 
-    /*public Double getModa(){
-        double moda = 0;
+    public Double getModa() {
+        double moda = 0.0;
         if (this.data == null) {
             return 0.0;
         }
-        return 0;
-    } */
+
+        int maximaVecesQueSeRepite = 0;
+
+        for (int i = 0; i < this.data.length; i++) {
+            int vecesQueSeRepite = 0;
+            for (int j = 0; j < this.data.length; j++) {
+                if (this.data[i] == this.data[j]) {
+                    vecesQueSeRepite++;
+                }
+            }
+            if (vecesQueSeRepite > maximaVecesQueSeRepite) {
+                moda = this.data[i];
+                maximaVecesQueSeRepite = vecesQueSeRepite;
+            }
+        }
+        
+        return moda;
+    }
+
+    
+
     public Double getMediana() {
-        double mediana = 0.0;
-        int x = 0;
+        if (this.data == null || this.data.length < 1) {
+            return 0.0;
+        }
+        Double mediana = 0.0;
         //ORDENO LOS DATOS
-        Arrays.sort(data);
-        x = data.length;
+        Arrays.sort(this.data);
         //DETERMINA SI CONJUNTO DE DATOS ES PAR O IMPAR
-        if (x % 2 == 0) {
-            double x1 = data[((x - 2) / 2)];
-            double x2 = data[x / 2];
-            mediana = (x1 + x2) / 2;
+        if (this.data.length % 2 == 0) {
+            double p1 = this.data[this.data.length / 2]; //EXPLICAR
+            double p2 = this.data[(this.data.length / 2) - 1];
+            mediana = (p1 + p2) / 2;
         } else {
-            mediana = data[(x - 1) / 2];
+            mediana = this.data[((this.data.length + 1) / 2) - 1];
         }
 
         return mediana;
@@ -81,12 +101,12 @@ public class Estadisticas {
             Double xi = this.data[fila];
             suma += Math.pow((xi - media), 2);
         }
-        return (suma / (data.length - 1));
+        return (suma / (data.length));
 
     }
 
     public Double getDesviacionEstandar() {
-        if (this.data == null || this.data.length < 1 ) {
+        if (this.data == null || this.data.length < 1) {
             return 0.0;
         }
         Double media = this.getMedia();
@@ -96,9 +116,9 @@ public class Estadisticas {
             Double xi = this.data[fila];
             suma += Math.pow((xi - media), 2);
         }
-        desviacionEstandar =  (suma / (data.length));
+        desviacionEstandar = (suma / (data.length));
 
-        return  Math.sqrt(desviacionEstandar);
+        return Math.sqrt(desviacionEstandar);
 
     }
 
@@ -132,9 +152,9 @@ public class Estadisticas {
         if (this.data == null || this.data.length < 3) {
             return 0.0;
         }
-        
+
         Arrays.sort(this.data);
-        
-        return this.data[this.data.length-1]-this.data[0];
+
+        return this.data[this.data.length - 1] - this.data[0];
     }
 }
