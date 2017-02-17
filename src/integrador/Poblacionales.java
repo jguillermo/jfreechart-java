@@ -32,6 +32,10 @@ public class Poblacionales implements StadisticsInterface {
         }
     }
 
+    public String getTitulo() {
+        return "POBLACIONAL";
+    }
+
     public Double getMedia() {
         if (this.data == null) {
             return 0.0;
@@ -50,26 +54,23 @@ public class Poblacionales implements StadisticsInterface {
         if (this.data == null) {
             return 0.0;
         }
-
         int maximaVecesQueSeRepite = 0;
 
-        for (int i = 0; i < this.data.length; i++) {
+        for (int fila = 0; fila < this.data.length; fila++) {
             int vecesQueSeRepite = 0;
             for (int j = 0; j < this.data.length; j++) {
-                if (this.data[i] == this.data[j]) {
+                if (this.data[fila] == this.data[j]) {
                     vecesQueSeRepite++;
                 }
             }
             if (vecesQueSeRepite > maximaVecesQueSeRepite) {
-                moda = this.data[i];
+                moda = this.data[fila];
                 maximaVecesQueSeRepite = vecesQueSeRepite;
             }
         }
-        
+
         return moda;
     }
-
-    
 
     public Double getMediana() {
         if (this.data == null || this.data.length < 1) {
@@ -80,7 +81,7 @@ public class Poblacionales implements StadisticsInterface {
         Arrays.sort(this.data);
         //DETERMINA SI CONJUNTO DE DATOS ES PAR O IMPAR
         if (this.data.length % 2 == 0) {
-            double p1 = this.data[this.data.length / 2]; //EXPLICAR
+            double p1 = this.data[this.data.length / 2];
             double p2 = this.data[(this.data.length / 2) - 1];
             mediana = (p1 + p2) / 2;
         } else {
@@ -123,33 +124,24 @@ public class Poblacionales implements StadisticsInterface {
     }
 
     public Double getDesviacionMedia() {
-        if (this.data == null) {
+
+        if (this.data == null || this.data.length < 1) {
             return 0.0;
         }
-        double media;
-        double v = 0;
-        double varianza = 0;
-        double desmed = 0;
+        Double media = this.getMedia();
         Double suma = 0.0;
+        Double desviacionMedia = 0.0;
         for (int fila = 0; fila < this.data.length; fila++) {
-            if (this.data[fila] != null) {
-                suma += this.data[fila];
-            }
-        }
-        media = suma / this.data.length;
-
-        for (int fila = 0; fila < this.data.length; fila++) {
-            double xi = data[fila];
+            Double xi = this.data[fila];
             suma += Math.abs(xi - media);
         }
-        v += data.length - 1;
-        desmed += suma / v;
+        desviacionMedia = (suma / (data.length));
 
-        return desmed;
+        return desviacionMedia;
     }
 
     public Double getRango() {
-        if (this.data == null || this.data.length < 3) {
+        if (this.data == null || this.data.length < 2) {
             return 0.0;
         }
 

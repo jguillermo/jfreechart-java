@@ -9,7 +9,6 @@ import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.axis.*;
 import org.jfree.data.xy.*;
 
-import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 
@@ -18,25 +17,23 @@ import org.jfree.data.general.DefaultPieDataset;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Color;
+import java.awt.SystemColor;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.Locale;
-import javax.swing.plaf.PanelUI;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
-import org.jfree.data.category.CategoryToPieDataset;
-import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
 import org.jfree.data.general.PieDataset;
 
 public class GUI2 extends javax.swing.JFrame {
 
-    private String[][] data = new String[6][2];
+    private String[][] data = new String[50][2];
 
     Integer count = 0;
 
-    private String charTitle = "Notas de Alumnos";
+    private String charTitle = "Nombre del Titulo";
     private String charTitle2 = "Nombre Eje X";
     private String charTitle3 = "Nombre Eje Y";
 
@@ -89,23 +86,24 @@ public class GUI2 extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
-        jLabel20 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 38)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(102, 0, 0));
         jLabel1.setText("GRAFICADOR ESTADISTICO");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(118, 10, 540, 29);
+        jLabel1.setBounds(0, 10, 510, 29);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel2.setText("TIPO DE GRAFICO");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(23, 46, 140, 17);
+        jLabel2.setBounds(20, 50, 140, 17);
 
         jRadioButton1.setText("Lineal");
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -114,7 +112,7 @@ public class GUI2 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jRadioButton1);
-        jRadioButton1.setBounds(10, 80, 70, 24);
+        jRadioButton1.setBounds(10, 80, 70, 23);
 
         jRadioButton2.setText("Barras");
         jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -123,7 +121,7 @@ public class GUI2 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jRadioButton2);
-        jRadioButton2.setBounds(90, 80, 100, 24);
+        jRadioButton2.setBounds(90, 80, 100, 23);
 
         jRadioButton3.setText("Circular");
         jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -132,11 +130,55 @@ public class GUI2 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jRadioButton3);
-        jRadioButton3.setBounds(190, 80, 80, 24);
+        jRadioButton3.setBounds(190, 80, 80, 23);
 
         jTable1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
                 {null, null},
                 {null, null},
                 {null, null},
@@ -158,62 +200,67 @@ public class GUI2 extends javax.swing.JFrame {
         jTable1.getAccessibleContext().setAccessibleDescription("");
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(20, 120, 240, 117);
+        jScrollPane1.setBounds(20, 110, 250, 140);
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setText("Mediana:");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(310, 160, 59, 14);
+        jLabel4.setBounds(340, 160, 70, 15);
 
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel11.setText("0");
         getContentPane().add(jLabel11);
-        jLabel11.setBounds(640, 120, 60, 17);
+        jLabel11.setBounds(740, 120, 70, 15);
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setText("Varianza:");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(510, 120, 60, 14);
+        jLabel5.setBounds(600, 120, 80, 15);
 
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel12.setText("0");
         getContentPane().add(jLabel12);
-        jLabel12.setBounds(640, 210, 40, 17);
+        jLabel12.setBounds(740, 210, 80, 15);
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setText("Rango:");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(510, 210, 44, 14);
+        jLabel6.setBounds(600, 210, 80, 15);
 
-        jLabel13.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel13.setText("MEDIDAS DE TENDENCIA CENTRAL");
         getContentPane().add(jLabel13);
-        jLabel13.setBounds(280, 80, 210, 15);
+        jLabel13.setBounds(330, 80, 260, 17);
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setText("Moda:");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(310, 200, 39, 14);
+        jLabel7.setBounds(340, 200, 60, 15);
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel14.setText("MEDIDAS DE DISPERSION");
         getContentPane().add(jLabel14);
-        jLabel14.setBounds(530, 80, 160, 15);
+        jLabel14.setBounds(610, 80, 190, 17);
 
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel8.setText("0");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(400, 120, 100, 17);
+        jLabel8.setBounds(430, 120, 80, 15);
 
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel9.setText("0");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(400, 160, 90, 17);
+        jLabel9.setBounds(430, 160, 80, 15);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("Media:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(310, 120, 50, 14);
+        jLabel3.setBounds(340, 120, 60, 15);
 
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel10.setText("0");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(400, 200, 40, 17);
+        jLabel10.setBounds(430, 200, 70, 15);
 
         jLayeredPane1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -226,7 +273,7 @@ public class GUI2 extends javax.swing.JFrame {
         jLayeredPane1.setLayout(jLayeredPane1Layout);
         jLayeredPane1Layout.setHorizontalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 699, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 804, Short.MAX_VALUE)
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -234,7 +281,7 @@ public class GUI2 extends javax.swing.JFrame {
         );
 
         getContentPane().add(jLayeredPane1);
-        jLayeredPane1.setBounds(23, 305, 705, 350);
+        jLayeredPane1.setBounds(23, 305, 810, 350);
 
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton3.setText("LIMPIAR");
@@ -244,25 +291,27 @@ public class GUI2 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton3);
-        jButton3.setBounds(20, 270, 120, 29);
+        jButton3.setBounds(20, 270, 120, 25);
 
-        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel16.setText("Desviación Estandar:");
         getContentPane().add(jLabel16);
-        jLabel16.setBounds(510, 150, 135, 14);
+        jLabel16.setBounds(600, 150, 130, 15);
 
+        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel17.setText("0");
         getContentPane().add(jLabel17);
-        jLabel17.setBounds(640, 150, 60, 17);
+        jLabel17.setBounds(740, 150, 70, 15);
 
-        jLabel19.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel19.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel19.setText("Desviación Media:");
         getContentPane().add(jLabel19);
-        jLabel19.setBounds(510, 180, 110, 14);
+        jLabel19.setBounds(600, 180, 120, 15);
 
+        jLabel18.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel18.setText("0");
         getContentPane().add(jLabel18);
-        jLabel18.setBounds(640, 180, 60, 17);
+        jLabel18.setBounds(740, 180, 80, 15);
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton2.setText("CAMBIAR TITULOS");
@@ -272,24 +321,35 @@ public class GUI2 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(560, 270, 160, 27);
+        jButton2.setBounds(660, 270, 160, 23);
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
         getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(490, 110, 10, 130);
-
-        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imagen6.jpg"))); // NOI18N
-        getContentPane().add(jLabel20);
-        jLabel20.setBounds(280, 60, 440, 190);
+        jSeparator1.setBounds(570, 110, 10, 130);
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Informacion.png"))); // NOI18N
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton4);
-        jButton4.setBounds(680, 20, 40, 42);
+        jButton4.setBounds(790, 10, 40, 39);
+
+        jLabel21.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel21.setText("POBLACIONAL");
+        getContentPane().add(jLabel21);
+        jLabel21.setBounds(520, 0, 270, 46);
+
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Imagen 3.jpg"))); // NOI18N
+        getContentPane().add(jLabel20);
+        jLabel20.setBounds(320, 60, 510, 190);
 
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imagen5.jpg"))); // NOI18N
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Imagen 2.jpg"))); // NOI18N
         getContentPane().add(jLabel15);
-        jLabel15.setBounds(0, 0, 740, 670);
+        jLabel15.setBounds(0, 0, 850, 670);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -313,11 +373,12 @@ public class GUI2 extends javax.swing.JFrame {
             dataset = this.getDataSet();
             chart = ChartFactory.createLineChart(this.charTitle, this.charTitle2, this.charTitle3, dataset, PlotOrientation.VERTICAL, false, true, false);
         } else if (jRadioButton2.isSelected()) {
-            dataset = this.getDataSet(); // GETDATASET??
+            dataset = this.getDataSet();
             chart = ChartFactory.createBarChart(this.charTitle, this.charTitle2, this.charTitle3, dataset, PlotOrientation.VERTICAL, false, false, false);
         } else if (jRadioButton3.isSelected()) {
             pieDataset = this.getPieDataSet();
             chart = ChartFactory.createPieChart(this.charTitle, pieDataset, false, false, false);
+            
         } else {
             jRadioButton1.setSelected(true);
             this.printDataChart();
@@ -348,9 +409,10 @@ public class GUI2 extends javax.swing.JFrame {
         DecimalFormat df = new DecimalFormat("#.###");
         df.setRoundingMode(RoundingMode.CEILING); //
 
+        jLabel21.setText(stadistics.getTitulo());
         jLabel8.setText(df.format(stadistics.getMedia()));
         jLabel9.setText(df.format(stadistics.getMediana()));
-        jLabel10.setText(df.format(stadistics.getMedia()));
+        jLabel10.setText(df.format(stadistics.getModa()));
         jLabel11.setText(df.format(stadistics.getVarianza()));
         jLabel17.setText(df.format(stadistics.getDesviacionEstandar()));
         jLabel18.setText(df.format(stadistics.getDesviacionMedia()));
@@ -386,11 +448,11 @@ public class GUI2 extends javax.swing.JFrame {
     }
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        for (int fila = 0; fila < 6; fila++) {
+        for (int fila = 0; fila < 50; fila++) {
             jTable1.setValueAt(null, fila, 0);
             jTable1.setValueAt(null, fila, 1);
         }
-        data = new String[6][2];
+        data = new String[50][2];
         this.printDataChart();
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -411,9 +473,9 @@ public class GUI2 extends javax.swing.JFrame {
     private void jTable1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jTable1PropertyChange
 
         Float nota;
-        data = new String[6][2];
+        data = new String[50][2];
 
-        for (int fila = 0; fila < 6; fila++) {
+        for (int fila = 0; fila < 50; fila++) {
             if (jTable1.getValueAt(fila, 1) != null) {
                 try {
                     nota = Float.parseFloat(String.valueOf(jTable1.getValueAt(fila, 1)));
@@ -467,6 +529,13 @@ public class GUI2 extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        JFrame frame = new GUI4("informacionMTC");
+        frame.setSize(740, 580);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -484,6 +553,7 @@ public class GUI2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
