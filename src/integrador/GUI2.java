@@ -399,7 +399,7 @@ public class GUI2 extends javax.swing.JFrame {
         StadisticsInterface stadistics;
 
         if (this.typeFrm == "poblacional") {
-            stadistics = new Poblacionales(this.data);
+           stadistics = new Poblacionales(this.data);
         } else if (this.typeFrm == "muestral") {
             stadistics = new Muestrales(this.data);
         } else {
@@ -472,15 +472,15 @@ public class GUI2 extends javax.swing.JFrame {
 
     private void jTable1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jTable1PropertyChange
 
-        Float nota;
+        Float numero;
         data = new String[50][2];
 
         for (int fila = 0; fila < 50; fila++) {
             if (jTable1.getValueAt(fila, 1) != null) {
                 try {
-                    nota = Float.parseFloat(String.valueOf(jTable1.getValueAt(fila, 1)));
-                    if (nota > 10000 || nota < 0) {
-                        throw new Exception("error de nota");
+                    numero = Float.parseFloat(String.valueOf(jTable1.getValueAt(fila, 1)));
+                    if (numero > 10000 || numero < 0) {
+                        throw new Exception("los digitos deben estar entre 0 y 1000");
                     }
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(this, "Debe llenar la tabla con datos numericos.");
@@ -488,7 +488,7 @@ public class GUI2 extends javax.swing.JFrame {
                     continue;
                 }
                 data[fila][0] = String.valueOf(jTable1.getValueAt(fila, 0));
-                data[fila][1] = nota + "";
+                data[fila][1] = numero + "";
             }
         }
         this.printDataChart();
